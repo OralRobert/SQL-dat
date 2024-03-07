@@ -1,0 +1,39 @@
+use robert5to7;
+select * from empolee;
+alter table empolee drop age;
+show tables;
+drop table empolee;
+create table student(roll_no int,fname varchar(20),lname varchar(20),contact int);
+desc student;
+alter table student add primary key(roll_no);
+insert into student values(1,'rohit','shelar',7304795580);
+select * from student;
+alter table student modify contact bigint unique;
+insert into student values(2,'robert','oral',7304795581);
+insert into student values(3,'abhishek','jagtab',7304795582);
+insert into student values(4,'ashish','more',7304795583);
+insert into student vALUES(5,'Regi','nair',7304795584);
+insert into student values(6,'netra','nadar',7304795585);
+insert into student values(7,'joel','willbert',7304795586);
+insert into student values(8,'malar','reklan',73047695587);
+insert into student values(9,'mahalaxmi','thevar',7304795589),(10,'jenish','raj',7304795588);
+insert into student values(11,'saud','sayyad',7304795510);
+select * from student;
+truncate table student;
+update student set fname = 'nadar' where roll_no=2;
+alter table student add column city varchar(20) default 'mumnai';
+alter table student modify roll_no int auto_increment;
+desc student;
+insert into student(fname,lname,contact) values('robert','nadar',7304795580);
+insert into student(fname,lname,contact) values('maha','thevar',7304795587);
+alter table student auto_increment=100;
+insert into student(fname,lname,contact) values('joel','nadar',7304795589);
+
+
+
+ 
+
+
+
+
+
