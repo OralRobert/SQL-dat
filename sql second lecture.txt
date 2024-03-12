@@ -1,0 +1,212 @@
+Microsoft Windows [Version 10.0.22621.3155]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p -h localhost
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| robert5to7         |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> create table student(id int primary key,name varchar(20) not null):
+    -> create table student(id int primary key, name varchar(20) not null):
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':
+create table student(id int primary key, name varchar(20) not null):' at line 1
+mysql> create table student(id int primary key, name varchar(20) not null):
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':' at line 1
+mysql> create table student(id int primary key, name varchar(20) not null);
+ERROR 1046 (3D000): No database selected
+mysql> use robert5to7;
+Database changed
+mysql> create table student(id int primary key, name varchar(20) not null);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_robert5to7 |
++----------------------+
+| first                |
+| student              |
++----------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table student add column age int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student add column age int not null;
+ERROR 1060 (42S21): Duplicate column name 'age'
+mysql> ;
+ERROR:
+No query specified
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student modify column age float not null;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
+| age   | float       | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student rename empolee;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_robert5to7 |
++----------------------+
+| empolee              |
+| first                |
++----------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc emploee;
+ERROR 1146 (42S02): Table 'robert5to7.emploee' doesn't exist
+mysql> desc emplee;
+ERROR 1146 (42S02): Table 'robert5to7.emplee' doesn't exist
+mysql> ;
+ERROR:
+No query specified
+
+mysql> desc empolee;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
+| age   | float       | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table empolee add column lname varchar(20) after name;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc empolee;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
+| lname | varchar(20) | YES  |     | NULL    |       |
+| age   | float       | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table empolee rename name to fname;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to fname' at line 1
+mysql>
+mysql>
+mysql> alter table empolee rename name to fname column;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to fname column' at line 1
+mysql> alter table empolee rename name to fname;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to fname' at line 1
+mysql> ;
+ERROR:
+No query specified
+
+mysql> alter table empolee rename column name to fname ;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc empol
+    -> desc empolee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc empolee' at line 2
+mysql> desc empolee;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| fname | varchar(20) | NO   |     | NULL    |       |
+| lname | varchar(20) | YES  |     | NULL    |       |
+| age   | float       | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table empolee add column gov id before id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id before id' at line 1
+mysql> ;
+ERROR:
+No query specified
+
+mysql> alter table empolee add column govid before id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'before id' at line 1
+mysql> ;
+ERROR:
+No query specified
+
+mysql> alter table empolee add column gov id first id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id first id' at line 1
+mysql> ;
+ERROR:
+No query specified
+
+mysql> alter table empolee add column gov id int first;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id int first' at line 1
+mysql> alter table empolee add column gov_id int first;
+Query OK, 0 rows affected (0.19 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> des
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'des' at line 1
+mysql> desc empolee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| gov_id | int         | YES  |     | NULL    |       |
+| id     | int         | NO   | PRI | NULL    |       |
+| fname  | varchar(20) | NO   |     | NULL    |       |
+| lname  | varchar(20) | YES  |     | NULL    |       |
+| age    | float       | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql>
