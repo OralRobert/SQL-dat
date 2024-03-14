@@ -1,0 +1,16 @@
+select * from student_data;
+select * from student_data where marks not in (86);
+select count(id),deparment from student_data where marks not in (63) group by deparment;
+select count(id),deparment from student_data where id not in (1,2) group by deparment having count(id)>3;
+select lower ('RObert');
+select upper ('robERT');
+select concat('Welcome to Heaven',' Robert');
+select replace('Welcome to Heaven Robert','Heaven','my Kingdom');
+select length('My name is Robert');
+select length(trim('      abc  abc      '));
+select trim('      abc  abc      ');
+select length(ltrim('      abc  abc      '));
+select length(rtrim('       abc  abc      '));
+select substring('My name is Robert',1,2);
+select substring('My name is Robert',4,7);
+select substring('My name is Robert',12);
