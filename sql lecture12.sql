@@ -1,3 +1,32 @@
+use robert;
+select * from user;
+select * from user where uname  = "joel";
+create table showroom(id int primary key,name varchar(20),price int,quantity int);
+insert into showroom values(1,'TV',45000,3),(2,'bike',85000,2),(3,'washing_machine',40000,4),
+(4,'fan',18000,10),(5,'car',95000,2);
+select * from showroom;
+select name,price from showroom;
+select name,price,(price * 0.2)from showroom;
+create table student_data(id int primary key,department varchar(20),
+student_name varchar(20),marks float,paid_fees bigint,attendance int);
+insert into student_data values(1,'mechanical','spiderman',53.1,34000,60),(2,'civil','hulk',73.9,85000,55),
+(3,'commerce','superman',90,50000,100);
+select * from student_data;
+select id, department, student_name,marks,
+case
+when marks>=40 and marks<=60 then 'third class'
+when marks>60 and marks<=80 then 'second class'
+when marks>=80 and marks<=100 then 'first class'
+end as result from student_data order by marks desc;
+
+create table college(cid int primary key,cname varchar(20), location varchar(30));
+create table student(sid int primary key,sname varchar(20), sage int, scity varchar(30),cid int,
+foreign key(cid) references college(cid));
+insert into college values(1,'SIWS','wadala'),(2,'knowledge_centre','wadala'),(3,'kelkar','nahur');
+insert into student values(1,'Robert',19,'mumbai',2),(2,'oral',22,'mumbai',3),(3,'joel',23,'mumbai',1),
+(4,'pooja',21,'mumbai',2),(5,'netra',24,'mumbai',3),(6,'abhishek',20,'mumbai',1),(7,'zambrai',19,'mumbai',2),
+(8,'nadar',25,'mumbai',3),(9,'ram',22,'mumbai',null),(10,'kumar',21,'mumbai',null);
+insert into college values(4,'SNDT','Sion');
 select * from student;
 select * from college; 
 select * from college inner join student on student.cid = college.cid;
