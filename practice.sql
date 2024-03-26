@@ -35,5 +35,39 @@ select * from movie;
 select id,movie_name,(production_cost + business_cost) as total_earning from movie;
 select distinct category from movie;
 select id,movie_name,(production_cost - business_cost) as net_profit from movie;
+create table uniform(ucode int primary key,uname varchar(20),ucolor varchar(10));
+create table cost(ucode int,foreign key(ucode) references uniform(ucode),size varchar(20),price int);
+insert into uniform values(1,'shirt','white'),(2,'pant','grey'),(3,'tie','blue');
+insert into cost values(1,'L',580),(1,'M',500),(2,'L',890),(2,'M',810);
+select * from uniform;
+select* from cost;
+select uniform.ucode,uniform.uname,uniform.ucolor,cost.size,cost.price from uniform join cost on 
+uniform.ucode = cost.ucode where uniform.ucode = cost.ucode;
+select uniform.ucode,uniform.uname,uniform.ucolor,cost.size,cost.price from uniform join cost on 
+uniform.ucode = cost.ucode;
+select * from uniform inner join cost on uniform.ucode = cost.ucode;
+select * from uniform natural join cost;
+SELECT DAYNAME('1947-08-15') AS IndependenceDay;
+select substring('Hii Robert',5,4);
+SELECT MONTHNAME('2000-08-17') AS BirthMonth;
+select upper('robert');
+select concat("MYSQL", " is fun");
+select replace('i love coding','coding','SQL');
+select length('i love india');
+select * from movie;
+select * from movie order by movie_name asc;
+select count(id),category from movie group by category having count(id)>1;
+show tables;
+select * from college;
+alter table college add column name varchar(30) default  'oral';
+select location, COUNT(*)from college GROUP BY location;
+select * from showroom;
+select name,max(price),min(price) from showroom group by name;
+select id,count(*),sum(price * quantity) from showroom group by id;
+show tables;
+insert into showroom  values(6,null,null,null);
+
+
+
 
 
